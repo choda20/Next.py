@@ -118,3 +118,4 @@ if __name__ == '__main__':
     ex222()
     ex233()
     ex234()
+    ex242_check()
