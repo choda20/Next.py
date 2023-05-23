@@ -1,4 +1,4 @@
-class Dog:
+class Dog:  # 2.2.2
     count_animals = 0
 
     def __init__(self, age, name="Octavio"):
@@ -26,7 +26,7 @@ class Dog:
         self._name = name
 
 
-class Pixel:
+class Pixel:  # 2.3.4
     def __init__(self, x=0, y=0, red=0, green=0, blue=0):
         self._x = x
         self._y = y
@@ -52,6 +52,31 @@ class Pixel:
         print("X: {x}, Y: {y}, Color: ({red},{green},{blue}) {pixel_color}".format(x=self._x, y=self._y, red=self._red,
                                                                                    green=self._green, blue=self._blue,
                                                                                    pixel_color=pixel_color))
+
+
+class BigThing:  # 2.4.2
+    def __init__(self, thing):
+        self._thing = thing
+
+    def size(self):
+        if isinstance(self._thing,int):
+            return self._thing
+        elif isinstance(self._thing,str) or isinstance(self._thing,list) or isinstance(self._thing,dict):
+            return len(self._thing) #
+
+
+class BigCat(BigThing):  # 2.4.2
+    def __init__(self, thing, weight):
+        super().__init__(thing)
+        self._weight = weight
+
+    def size(self):
+        if self._weight > 20:
+            return "Very Fat"
+        elif self._weight > 15:
+            return "Fat"
+        else:
+            "OK"
 
 
 def ex222():  # 2.2.2
@@ -80,6 +105,13 @@ def ex234():  # 2.3.4
     pixel.set_greyscale()
     pixel.print_pixel_info()
     print("\n")
+
+
+def ex242_check():
+    my_thing = BigThing("balloon")
+    print(my_thing.size())
+    cutie = BigCat("mitzy", 22)
+    print(cutie.size())
 
 
 if __name__ == '__main__':
